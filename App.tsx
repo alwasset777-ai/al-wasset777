@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ClientProfile, INITIAL_CLIENT_PROFILE } from './types';
 import ClientForm from './components/ClientForm';
 import ClientCard from './components/ClientCard';
-import { Sparkles, Printer, MessageCircle, Save, Building2, Loader2, FilePlus, Calculator, Percent, Calendar, Banknote } from './components/Icons';
+import { Sparkles, Printer, MessageCircle, Save, Building2, Loader2, FilePlus, Calculator, Percent, Calendar, Banknote, Search } from './components/Icons';
 import { generateClientSummary, generateRecommendations, generateDraftMessage } from './services/geminiService';
 
 const App: React.FC = () => {
@@ -91,7 +91,7 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-slate-50 pb-20 font-sans text-slate-800">
       {/* Navbar */}
       <header className="bg-morocco-green text-white sticky top-0 z-50 shadow-md print:hidden">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3">
             <Building2 className="w-8 h-8 text-morocco-gold" />
             <div>
@@ -99,6 +99,17 @@ const App: React.FC = () => {
               <p className="text-xs text-morocco-sand opacity-80">Gestion Fiche Client</p>
             </div>
           </div>
+
+          {/* Barre de recherche visuelle */}
+          <div className="flex-1 max-w-md w-full mx-4 relative hidden sm:block">
+             <input 
+               type="text" 
+               placeholder="Rechercher un client / dossier..." 
+               className="w-full bg-white/10 border border-white/20 text-white placeholder-white/50 rounded-full py-2 pl-10 pr-4 text-sm outline-none focus:bg-white/20 transition"
+             />
+             <Search className="w-4 h-4 text-white/50 absolute left-3 top-2.5" />
+          </div>
+
           <div className="flex gap-3">
             <button 
                onClick={handleNewClient}

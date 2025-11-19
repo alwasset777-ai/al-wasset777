@@ -48,7 +48,8 @@ import {
   FilePlus,
   Calculator,
   Percent,
-  Calendar
+  Calendar,
+  Search
 } from 'lucide-react';
 
 export { 
@@ -99,5 +100,6 @@ export {
   FilePlus,
   Calculator,
   Percent,
-  Calendar
+  Calendar,
+  Search
 };

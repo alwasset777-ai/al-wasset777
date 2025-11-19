@@ -5,7 +5,7 @@ import {
   User, Phone, Mail, MapPin, Banknote, FileText, Facebook, Instagram, Linkedin, 
   Map, Share2, Youtube, Twitter, Video, Globe, Upload, Image, Trash2, X,
   Armchair, Utensils, Bath, Car, Waves, Flower2, Sun, Droplets, TreeDeciduous,
-  Tractor, Sprout, ArrowUpDown, Building2, Star, Coffee, Presentation, Handshake, Mic
+  Tractor, Sprout, ArrowUpDown, Building2, Star, Coffee, Presentation, Handshake, Mic, Search
 } from './Icons';
 
 interface ClientFormProps {
@@ -287,17 +287,23 @@ const ClientForm: React.FC<ClientFormProps> = ({ data, onChange }) => {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-               <label className="block text-sm font-medium text-slate-700 mb-1 flex items-center gap-1"><MapPin className="w-3 h-3"/> Ville</label>
-                <select
-                  name="city"
-                  value={data.city}
-                  onChange={handleChange}
-                  className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-morocco-green focus:border-transparent outline-none bg-white"
-                >
-                   {MOROCCAN_CITIES.map((c) => (
-                    <option key={c} value={c}>{c}</option>
-                  ))}
-                </select>
+               <label className="block text-sm font-medium text-slate-700 mb-1 flex items-center gap-1"><MapPin className="w-3 h-3"/> Ville (Recherche)</label>
+               <div className="relative">
+                 <input
+                   list="cities-list"
+                   name="city"
+                   value={data.city}
+                   onChange={handleChange}
+                   placeholder="Chercher une ville..."
+                   className="w-full p-2 pl-8 border border-slate-300 rounded-lg focus:ring-2 focus:ring-morocco-green focus:border-transparent outline-none bg-white"
+                 />
+                 <Search className="w-3 h-3 absolute left-3 top-3 text-slate-400" />
+                 <datalist id="cities-list">
+                    {MOROCCAN_CITIES.map((c) => (
+                      <option key={c} value={c} />
+                    ))}
+                 </datalist>
+               </div>
             </div>
             <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">Localisation / Secteur</label>
